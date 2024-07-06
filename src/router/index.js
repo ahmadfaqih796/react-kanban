@@ -2,9 +2,9 @@ import { lazy } from "react";
 import { Navigate, RouterProvider, createHashRouter } from "react-router-dom";
 
 import AuthGuard from "@/router/components/auth-guard";
-import { usePermissionRoutes } from "@/router/hooks";
 import { ErrorRoutes } from "@/router/routes/error-routes";
 import DashboardLayout from "@/layouts/dashboard";
+import { usePermissionRoutes } from "./hooks/use-permission-routes";
 
 const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 const LoginRoute = {
@@ -17,7 +17,7 @@ const PAGE_NOT_FOUND_ROUTE = {
 };
 
 export default function Router() {
-  const permissionRoutes = usePermissionRoutes();
+  // const permissionRoutes = usePermissionRoutes();
   const asyncRoutes = {
     path: "/",
     element: (
@@ -27,7 +27,7 @@ export default function Router() {
     ),
     children: [
       { index: true, element: <Navigate to={HOMEPAGE} replace /> },
-      ...permissionRoutes,
+      // ...permissionRoutes,
     ],
   };
 
