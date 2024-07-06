@@ -6,8 +6,6 @@ import SimpleLayout from "@/layouts/simple";
 
 import AuthGuard from "../components/auth-guard";
 
-import { AppRouteObject } from "#/router";
-
 const Page403 = lazy(() => import("@/pages/sys/error/Page403"));
 const Page404 = lazy(() => import("@/pages/sys/error/Page404"));
 const Page500 = lazy(() => import("@/pages/sys/error/Page500"));
