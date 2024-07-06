@@ -1,12 +1,17 @@
 import { lazy } from "react";
-import { Navigate, RouterProvider, createHashRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createHashRouter,
+  createBrowserRouter,
+} from "react-router-dom";
 
 import { ErrorRoutes } from "@/router/routes/error-routes";
 import DashboardLayout from "@/layouts/dashboard";
 import AuthGuard from "./components/auth-guard";
+import { APP_BROWSER_HASH, HOMEPAGE } from "vite-env";
 // import { usePermissionRoutes } from "./hooks/use-permission-routes";
 
-const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 const LoginRoute = {
   path: "/login",
   Component: lazy(() => import("@/pages/sys/login/Login")),
@@ -17,6 +22,7 @@ const PAGE_NOT_FOUND_ROUTE = {
 };
 
 export default function Router() {
+  console.log("ssssssssssssss", APP_BROWSER_HASH);
   // const permissionRoutes = usePermissionRoutes();
   const asyncRoutes = {
     path: "/",
@@ -33,7 +39,10 @@ export default function Router() {
 
   const routes = [LoginRoute, asyncRoutes, ErrorRoutes, PAGE_NOT_FOUND_ROUTE];
 
-  const router = createHashRouter(routes);
+  const router =
+    APP_BROWSER_HASH === "true"
+      ? createHashRouter(routes)
+      : createBrowserRouter(routes);
 
   return <RouterProvider router={router} />;
 }
