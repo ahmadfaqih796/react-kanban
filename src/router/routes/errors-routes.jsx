@@ -2,9 +2,9 @@ import { Suspense, lazy } from "react";
 import { Outlet } from "react-router-dom";
 
 import { CircleLoading } from "@/components/loading";
-import SimpleLayout from "@/layouts/simple";
 
 import AuthGuard from "../components/auth-guard";
+import SimpleLayout from "@/layouts/simple";
 
 const Page403 = lazy(() => import("@/pages/sys/error/Page403"));
 const Page404 = lazy(() => import("@/pages/sys/error/Page404"));
