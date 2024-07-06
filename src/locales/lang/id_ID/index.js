@@ -1,7 +1,7 @@
-const common = require("./common.json");
-const sys = require("./sys.json");
+import common from "./common.json";
+import sys from "./sys.json";
 
-module.exports = {
+export default {
   ...common,
   ...sys,
 };
