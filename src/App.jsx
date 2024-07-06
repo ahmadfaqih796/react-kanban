@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 import MotionLazy from "./components/animate/motion-lazy";
+import Router from "./router";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,7 +18,7 @@ function App() {
             //  href={Logo}
           />
         </Helmet>
-        {/* <Router /> */}
+        <Router />
       </MotionLazy>
     </AntdApp>
   );
