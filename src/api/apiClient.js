@@ -4,7 +4,7 @@ import axios from "axios";
 import { t } from "@/locales/i18n";
 import userStore from "@/store/userStore";
 
-import { ResultEnum } from "#/enum";
+import { ResultEnum } from "@/types/enum";
 
 // Membuat instance axios
 const axiosInstance = axios.create({

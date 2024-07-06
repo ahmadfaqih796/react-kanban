@@ -6,7 +6,7 @@ import { create } from "zustand";
 import userService from "@/api/services/userService";
 import { getItem, removeItem, setItem } from "@/utils/storage";
 
-import { StorageEnum } from "#/enum";
+import { StorageEnum } from "@/types/enum";
 import { HOMEPAGE } from "vite-env";
 
 const useUserStore = create((set) => ({
