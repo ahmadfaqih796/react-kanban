@@ -1,5 +1,5 @@
 import { Progress } from "antd";
-import Color from "color";
+// import Color from "color";
 import { useEffect, useState } from "react";
 
 // import { useThemeToken } from '@/theme/hooks';
@@ -31,8 +31,8 @@ export function LineLoading() {
     <div className="m-auto flex h-full w-96 items-center justify-center">
       <Progress
         percent={percent}
-        trailColor={Color("#ff0").alpha(0.8).toString()}
-        strokeColor={Color("#ff0").alpha(0.8).toString()}
+        trailColor={"#ff0"}
+        strokeColor={"#ff0"}
         showInfo={false}
         size="small"
       />

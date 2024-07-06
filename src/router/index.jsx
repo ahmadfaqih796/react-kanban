@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import { Navigate, RouterProvider, createHashRouter } from "react-router-dom";
 
-import AuthGuard from "@/router/components/auth-guard";
 import { ErrorRoutes } from "@/router/routes/error-routes";
 import DashboardLayout from "@/layouts/dashboard";
+import AuthGuard from "./components/auth-guard";
 // import { usePermissionRoutes } from "./hooks/use-permission-routes";
 
 const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
