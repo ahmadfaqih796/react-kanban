@@ -1,0 +1,144 @@
+{
+  "sys": {
+    "api": {
+      "operationSuccess": "Operasi berhasil",
+      "operationFailed": "Operasi gagal",
+      "errorTip": "Tip kesalahan",
+      "successTip": "Tip sukses",
+      "errorMessage": "Operasi gagal, sistem mengalami kesalahan!",
+      "timeoutMessage": "Sesi login habis, silakan login kembali!",
+      "apiTimeoutMessage": "Permintaan API waktu habis, harap segarkan halaman dan coba lagi!",
+      "apiRequestFailed": "Permintaan gagal, harap coba lagi nanti",
+      "networkException": "Kesalahan jaringan",
+      "networkExceptionMsg": "Kesalahan jaringan, harap periksa koneksi internet Anda!",
+
+      "errMsg401": "Pengguna tidak memiliki izin (token, nama pengguna, atau kata sandi salah)!",
+      "errMsg403": "Pengguna memiliki izin tetapi akses ditolak!",
+      "errMsg404": "Kesalahan permintaan jaringan, sumber tidak ditemukan!",
+      "errMsg405": "Kesalahan permintaan jaringan, metode permintaan tidak diizinkan!",
+      "errMsg408": "Permintaan jaringan waktu habis!",
+      "errMsg500": "Kesalahan server, harap hubungi administrator!",
+      "errMsg501": "Jaringan belum diimplementasikan!",
+      "errMsg502": "Kesalahan jaringan!",
+      "errMsg503": "Layanan tidak tersedia, server sementara overload atau dalam pemeliharaan!",
+      "errMsg504": "Waktu koneksi jaringan habis!",
+      "errMsg505": "Versi HTTP tidak mendukung permintaan ini!"
+    },
+    "login": {
+      "backSignIn": "Kembali",
+      "signInFormTitle": "Masuk",
+      "mobileSignInFormTitle": "Masuk dengan Nomor HP",
+      "qrSignInFormTitle": "Masuk dengan Kode QR",
+      "signUpFormTitle": "Daftar",
+      "forgetFormTitle": "Lupa Kata Sandi",
+
+      "signInPrimaryTitle": "Selamat datang kembali",
+      "signInSecondTitle": "Sistem manajemen admin yang siap digunakan",
+      "signInDesc": "Masukkan detail pribadi Anda untuk memulai!",
+      "policy": "Saya menyetujui kebijakan privasi xxx",
+      "scanSign": "Pindai kode QR dan klik 'Konfirmasi' untuk masuk",
+      "forgetFormSecondTitle": "Masukkan alamat email yang terkait dengan akun Anda, kami akan mengirimkan tautan reset kata sandi melalui email.",
+
+      "loginButton": "Masuk",
+      "registerButton": "Daftar",
+      "rememberMe": "Ingat saya",
+      "forgetPassword": "Lupa kata sandi?",
+      "otherSignIn": "Metode masuk lainnya",
+      "sendSmsButton": "Kirim Kode",
+      "sendSmsText": "{{second}} detik untuk mendapatkan lagi",
+      "sendEmailButton": "Kirim Email",
+
+      "loginSuccessTitle": "Login berhasil",
+      "loginSuccessDesc": "Selamat datang kembali",
+
+      "accountPlaceholder": "Masukkan akun Anda",
+      "passwordPlaceholder": "Masukkan kata sandi Anda",
+      "confirmPasswordPlaceholder": "Masukkan konfirmasi kata sandi",
+      "emaildPlaceholder": "Masukkan alamat email Anda",
+      "smsPlaceholder": "Masukkan kode verifikasi",
+      "mobilePlaceholder": "Masukkan nomor telepon Anda",
+      "policyPlaceholder": "Centang untuk daftar",
+
+      "userName": "Nama pengguna",
+      "password": "Kata sandi",
+      "confirmPassword": "Konfirmasi kata sandi",
+      "email": "Email",
+      "smsCode": "Kode SMS",
+      "mobile": "Nomor telepon",
+
+      "registerAndAgree": "Daftar berarti saya setuju",
+      "termsOfService": " Ketentuan Layanan ",
+      "privacyPolicy": " Kebijakan Privasi ",
+      "logout": "Keluar"
+    },
+    "tab": {
+      "fullscreen": "Layar penuh",
+      "refresh": "Segarkan",
+      "close": "Tutup tab",
+      "closeOthers": "Tutup tab lainnya",
+      "closeAll": "Tutup semua tab",
+      "closeLeft": "Tutup tab sebelah kiri",
+      "closeRight": "Tutup tab sebelah kanan"
+    },
+    "menu": {
+      "dashboard": "Dasbor",
+      "workbench": "Bench Kerja",
+      "analysis": "Analisis",
+      "management": "Manajemen",
+      "user": {
+        "index": "Pengguna",
+        "profile": "Profil",
+        "account": "Akun"
+      },
+      "system": {
+        "index": "Sistem",
+        "organization": "Organisasi",
+        "permission": "Izin",
+        "role": "Peran",
+        "user": "Pengguna",
+        "user_detail": "Detail Pengguna"
+      },
+      "blog": "Blog",
+      "components": "Komponen",
+      "icon": "Ikon",
+      "animate": "Animasi",
+      "scroll": "Gulir",
+      "markdown": "Markdown",
+      "editor": "Editor Teks Kaya",
+      "i18n": "Multi Bahasa",
+      "upload": "Unggah",
+      "chart": "Grafik",
+      "functions": "Fungsi",
+      "clipboard": "Papan Klip",
+      "token_expired": "Token Kedaluwarsa",
+      "menulevel": {
+        "index": "Menu Berlevel",
+        "1a": "Menu Berlevel 1a",
+        "1b": {
+          "index": "Menu Berlevel 1b",
+          "2a": "Menu Berlevel 2a",
+          "2b": {
+            "index": "Menu Berlevel 2b",
+            "3a": "Menu Berlevel 3a",
+            "3b": "Menu Berlevel 3b"
+          }
+        }
+      },
+      "disabled": "Proyek Dinonaktifkan",
+      "label": "Label Proyek",
+      "frame": "Tautan Luar Proyek",
+      "external_link": "Tautan Eksternal",
+      "iframe": "Iframe",
+      "blank": "Halaman Kosong",
+      "calendar": "Kalender",
+      "kanban": "Kanban",
+      "error": {
+        "index": "Halaman Kesalahan",
+        "403": "403",
+        "404": "404",
+        "500": "500"
+      }
+    },
+    "docs": "Dokumen"
+  }
+}

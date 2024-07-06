@@ -1,0 +1,22 @@
+{
+  "common": {
+    "okText": "Konfirmasi",
+    "closeText": "Tutup",
+    "cancelText": "Batal",
+    "loadingText": "Sedang memuat...",
+    "saveText": "Simpan",
+    "delText": "Hapus",
+    "resetText": "Reset",
+    "searchText": "Cari",
+    "queryText": "Query",
+
+    "inputText": "Silakan masukkan",
+    "chooseText": "Silakan pilih",
+
+    "redo": "Muat ulang",
+    "back": "Kembali",
+
+    "light": "Tema Terang",
+    "dark": "Tema Gelap"
+  }
+}
