@@ -26,7 +26,7 @@ Make sure you have the following installed:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/kanban-react-vite.git
+   git clone https://github.com/ahmadfaqih796/react-kanban.git
    cd kanban-react-vite
    ```
 
@@ -54,6 +54,7 @@ Make sure you have the following installed:
 
 ## Project Structure
 
+```
 .
 ├── public
 │ ├── favicon.ico
@@ -74,6 +75,7 @@ Make sure you have the following installed:
 ├── package.json
 ├── vite.config.js
 └── README.
+```
 
 - **public/**: Static files served by Vite.
 - **src/**: Contains all the source code for the project.
