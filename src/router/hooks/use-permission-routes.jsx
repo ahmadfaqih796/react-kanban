@@ -8,7 +8,7 @@ import { useUserPermission } from "@/store/userStore";
 import ProTag from "@/theme/antd/components/tag";
 import { flattenTrees } from "@/utils/tree";
 
-import { BasicStatus, PermissionType } from "#/enum";
+import { BasicStatus, PermissionType } from "@/types/enum";
 
 // Using import.meta.glob to get all route components
 const entryPath = "/src/pages";
