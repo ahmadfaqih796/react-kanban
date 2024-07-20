@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 
 import DashboardImg from "@/assets/images/background/dashboard.png";
 import Overlay2 from "@/assets/images/background/overlay_2.jpg";
-import LocalePicker from "@/components/locale-picker";
+import LocalePicker from "@/components/picker/locale-picker";
 import { useUserToken } from "@/store/userStore";
 import { useThemeToken } from "@/theme/hooks";
 
@@ -16,6 +16,7 @@ import QrCodeFrom from "./QrCodeForm";
 import RegisterForm from "./RegisterForm";
 import ResetForm from "./ResetForm";
 import { SvgIcon } from "@/components/icon";
+import ThemePicker from "@/components/picker/theme-picker";
 
 const HOMEPAGE = import.meta.env.VITE_APP_HOMEPAGE;
 
@@ -65,8 +66,12 @@ const Login = () => {
           </LoginStateProvider>
         </div>
 
+        {/* <div className="absolute left-4 top-0">
+          <ThemePicker />
+        </div> */}
         <div className="absolute right-2 top-0">
           <LocalePicker />
+          <ThemePicker />
         </div>
       </Layout>
     </>
