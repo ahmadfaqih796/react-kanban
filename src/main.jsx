@@ -29,15 +29,15 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <Suspense>
-          {/* <Analytics /> */}
-          <App />
-        </Suspense>
-      </QueryClientProvider>
-    </HelmetProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <Suspense>
+        {/* <Analytics /> */}
+        <App />
+      </Suspense>
+    </QueryClientProvider>
+  </HelmetProvider>
+  // </React.StrictMode>
 );

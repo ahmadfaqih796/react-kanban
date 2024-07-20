@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { LocalEnum } from "@/types/enum";
 
-const LANGUAGE_MAP = {
+export const LANGUAGE_MAP = {
   [LocalEnum.id_ID]: {
     locale: LocalEnum.id_ID,
     label: "Indonesia",

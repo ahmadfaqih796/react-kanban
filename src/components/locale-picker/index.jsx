@@ -1,6 +1,6 @@
 import { Dropdown } from "antd";
 
-import useLocale from "@/locales/useLocale";
+import useLocale, { LANGUAGE_MAP } from "@/locales/useLocale";
 
 import { IconButton, SvgIcon } from "../icon";
 
@@ -8,9 +8,9 @@ import { IconButton, SvgIcon } from "../icon";
  * Locale Picker
  */
 const LocalePicker = () => {
-  const { setLocale, locale, language } = useLocale();
+  const { setLocale, locale } = useLocale();
 
-  const localeList = Object.values(language).map((item) => {
+  const localeList = Object.values(LANGUAGE_MAP).map((item) => {
     return {
       key: item.locale,
       label: item.label,
@@ -31,6 +31,7 @@ const LocalePicker = () => {
           size="24"
           className="rounded-md"
         />
+        Bahasa
       </IconButton>
     </Dropdown>
   );
