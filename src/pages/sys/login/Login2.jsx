@@ -29,8 +29,6 @@ const Login = () => {
   } = settings;
   const { setSettings } = useSettingActions();
 
-  console.log("cccccccccccc", themeMode);
-
   const setThemeMode = (themeMode) => {
     setSettings({
       ...settings,
