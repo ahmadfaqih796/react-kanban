@@ -1,7 +1,13 @@
 import { useSettingActions, useSettings } from "@/store/settingStore";
 import { useThemeToken } from "@/theme/hooks";
 import { ThemeMode } from "@/types/enum";
-import React from "react";
+import React, { useState } from "react";
+import { Button, Card, Drawer, Layout, Switch, Tooltip } from "antd";
+
+import CyanBlur from "@/assets/images/background/cyan-blur.png";
+import RedBlur from "@/assets/images/background/red-blur.png";
+import { SvgIcon } from "@/components/icon";
+import LoginForm from "./LoginForm";
 
 const Login = () => {
   const {
@@ -22,6 +28,8 @@ const Login = () => {
     multiTab,
   } = settings;
   const { setSettings } = useSettingActions();
+
+  console.log("cccccccccccc", themeMode);
 
   const setThemeMode = (themeMode) => {
     setSettings({
@@ -65,22 +73,22 @@ const Login = () => {
     });
   };
 
-  const style = {
-    backdropFilter: "blur(20px)",
-    backgroundImage: `url("${CyanBlur}"), url("${RedBlur}")`,
-    backgroundRepeat: "no-repeat, no-repeat",
-    backgroundColor: Color(colorBgContainer).alpha(0.9).toString(),
-    backgroundPosition: "right top, left bottom",
-    backgroundSize: "50, 50%",
-  };
+  // const style = {
+  //   backdropFilter: "blur(20px)",
+  //   backgroundImage: `url("${CyanBlur}"), url("${RedBlur}")`,
+  //   backgroundRepeat: "no-repeat, no-repeat",
+  //   backgroundColor: Color(colorBgContainer).alpha(0.9).toString(),
+  //   backgroundPosition: "right top, left bottom",
+  //   backgroundSize: "50, 50%",
+  // };
 
-  const [isFullscreen, setIsFullscreen] = useState(screenfull.isFullscreen);
-  const toggleFullScreen = () => {
-    if (screenfull.isEnabled) {
-      screenfull.toggle();
-      setIsFullscreen(!isFullscreen);
-    }
-  };
+  // const [isFullscreen, setIsFullscreen] = useState(screenfull.isFullscreen);
+  // const toggleFullScreen = () => {
+  //   if (screenfull.isEnabled) {
+  //     screenfull.toggle();
+  //     setIsFullscreen(!isFullscreen);
+  //   }
+  // };
 
   const layoutBackground = (layout) =>
     themeLayout === layout
@@ -88,7 +96,8 @@ const Login = () => {
       : "#919eab";
 
   return (
-    <>
+    <Layout className="relative flex !min-h-screen !w-full !flex-row">
+      <LoginForm />
       <div
         className="mb-3 text-base font-semibold"
         style={{ color: colorTextSecondary }}
@@ -103,7 +112,7 @@ const Login = () => {
           <SvgIcon
             icon="ic-settings-mode-sun"
             size="24"
-            color={themeMode === ThemeMode.Light ? colorPrimary : ""}
+            color={themeMode === ThemeMode.Light ? "white" : "black"}
           />
         </Card>
         <Card
@@ -117,7 +126,7 @@ const Login = () => {
           />
         </Card>
       </div>
-    </>
+    </Layout>
   );
 };
 

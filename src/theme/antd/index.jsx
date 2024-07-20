@@ -12,7 +12,7 @@ import {
   customComponentConfig,
 } from "./theme";
 
-import { ThemeMode } from "#/enum";
+import { ThemeMode } from "@/types/enum";
 
 export default function AntdConfig({ children }) {
   const { themeMode, themeColorPresets } = useSettings();

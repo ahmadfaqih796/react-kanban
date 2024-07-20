@@ -21,7 +21,7 @@ export default function SvgIcon({
       className={`anticon fill-current inline-block h-[1em] w-[1em] overflow-hidden outline-none ${className}`}
       style={svgStyle}
     >
-      <use xlinkHref={symbolId} fill="currentColor" />
+      <use href={symbolId} fill="currentColor" />
     </svg>
   );
 }
