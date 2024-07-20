@@ -20,6 +20,7 @@
     "framer-motion": "^11.2.13",
     "i18next": "^23.11.5",
     "i18next-browser-languagedetector": "^8.0.0",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "ramda": "^0.30.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -29,6 +30,7 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.24.1",
     "styled-components": "^6.1.12",
+    "tailwindcss": "^3.4.6",
     "vite-tsconfig-paths": "^4.3.2",
     "zustand": "^4.5.4"
   },

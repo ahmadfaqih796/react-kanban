@@ -5,12 +5,14 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import "./index.css";
+// import "./index.css";
 
 import { HelmetProvider } from "react-helmet-async";
 
 // i18n
 import "./locales/i18n";
+// tailwind css
+import "./theme/index.css";
 
 // Membuat klien
 const queryClient = new QueryClient({
