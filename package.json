@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@iconify/react": "^5.0.1",
     "@tanstack/react-query": "^5.50.1",
     "@tanstack/react-query-devtools": "^5.50.1",
@@ -24,6 +25,7 @@
     "react-error-boundary": "^4.0.13",
     "react-helmet-async": "^2.0.5",
     "react-i18next": "^14.1.2",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.24.1",
     "styled-components": "^6.1.12",
     "vite-tsconfig-paths": "^4.3.2",
