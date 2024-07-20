@@ -44,6 +44,7 @@ const Login = () => {
         >
           <div className="text-3xl font-bold leading-normal text-center lg:text-4xl xl:text-5xl">
             Faqih Admin
+            <SvgIcon icon="ic-settings-mode-moon" size="24px" color="#fff" />
             <SvgIcon icon="ic-settings-mode-moon" size="24px" color="black" />
           </div>
           <img
@@ -68,7 +69,6 @@ const Login = () => {
 
         <div className="absolute right-2 top-0">
           <LocalePicker />
-          {/* xxxx */}
         </div>
       </Layout>
     </>

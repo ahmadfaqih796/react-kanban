@@ -9,6 +9,9 @@ import App from "./App.jsx";
 
 import { HelmetProvider } from "react-helmet-async";
 
+// eslint-disable-next-line import/no-unresolved
+// untuk mendaftarkan ikon SVG
+import "virtual:svg-icons-register";
 // i18n
 import "./locales/i18n";
 // tailwind css
