@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 
 import DashboardImg from "@/assets/images/background/dashboard.png";
 import Overlay2 from "@/assets/images/background/overlay_2.jpg";
-import LocalePicker from "@/components/picker/locale-picker";
+import { LocalePicker, ThemePicker } from "@/components/picker";
 import { useUserToken } from "@/store/userStore";
 import { useThemeToken } from "@/theme/hooks";
 
@@ -15,8 +15,6 @@ import { LoginStateProvider } from "./providers/LoginStateProvider";
 import QrCodeFrom from "./QrCodeForm";
 import RegisterForm from "./RegisterForm";
 import ResetForm from "./ResetForm";
-import { SvgIcon } from "@/components/icon";
-import ThemePicker from "@/components/picker/theme-picker";
 
 const HOMEPAGE = import.meta.env.VITE_APP_HOMEPAGE;
 
@@ -37,6 +35,16 @@ const Login = () => {
   return (
     <>
       <Layout className="relative flex !min-h-screen !w-full !flex-row">
+        <div className="m-auto flex !h-screen w-full max-w-[480px] flex-col justify-center px-[16px] lg:px-[64px]">
+          <LoginStateProvider>
+            <LoginForm />
+            <MobileForm />
+            <QrCodeFrom />
+            <RegisterForm />
+            <ResetForm />
+          </LoginStateProvider>
+        </div>
+
         <div
           className="hidden grow flex-col items-center justify-center gap-[10px] bg-center bg-no-repeat md:flex"
           style={{
@@ -56,20 +64,7 @@ const Login = () => {
           </Typography.Text>
         </div>
 
-        <div className="m-auto flex !h-screen w-full max-w-[480px] flex-col justify-center px-[16px] lg:px-[64px]">
-          <LoginStateProvider>
-            <LoginForm />
-            <MobileForm />
-            <QrCodeFrom />
-            <RegisterForm />
-            <ResetForm />
-          </LoginStateProvider>
-        </div>
-
-        {/* <div className="absolute left-4 top-0">
-          <ThemePicker />
-        </div> */}
-        <div className="absolute right-2 top-0">
+        <div className="flex justify-between absolute right-2 top-0">
           <LocalePicker />
           <ThemePicker />
         </div>

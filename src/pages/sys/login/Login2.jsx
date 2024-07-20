@@ -1,131 +1,76 @@
-import { useSettingActions, useSettings } from "@/store/settingStore";
+import { Layout, Typography } from "antd";
+import Color from "color";
+import { useTranslation } from "react-i18next";
+import { Navigate } from "react-router-dom";
+
+import DashboardImg from "@/assets/images/background/dashboard.png";
+import Overlay2 from "@/assets/images/background/overlay_2.jpg";
+import { LocalePicker, ThemePicker } from "@/components/picker";
+import { useUserToken } from "@/store/userStore";
 import { useThemeToken } from "@/theme/hooks";
-import { ThemeMode } from "@/types/enum";
-import React, { useState } from "react";
-import { Button, Card, Drawer, Layout, Switch, Tooltip } from "antd";
 
-import CyanBlur from "@/assets/images/background/cyan-blur.png";
-import RedBlur from "@/assets/images/background/red-blur.png";
-import { SvgIcon } from "@/components/icon";
 import LoginForm from "./LoginForm";
+import MobileForm from "./MobileForm";
+import { LoginStateProvider } from "./providers/LoginStateProvider";
+import QrCodeFrom from "./QrCodeForm";
+import RegisterForm from "./RegisterForm";
+import ResetForm from "./ResetForm";
 
-const Login = () => {
-  const {
-    colorPrimary,
-    colorBgBase,
-    colorTextSecondary,
-    colorTextTertiary,
-    colorBgContainer,
-  } = useThemeToken();
+const HOMEPAGE = import.meta.env.VITE_APP_HOMEPAGE;
 
-  const settings = useSettings();
-  const {
-    themeMode,
-    themeColorPresets,
-    themeLayout,
-    themeStretch,
-    breadCrumb,
-    multiTab,
-  } = settings;
-  const { setSettings } = useSettingActions();
+const Login2 = () => {
+  const { t } = useTranslation();
+  const token = useUserToken();
+  const { colorBgElevated } = useThemeToken();
 
-  const setThemeMode = (themeMode) => {
-    setSettings({
-      ...settings,
-      themeMode,
-    });
-  };
+  // Check if user has a token
+  if (token.accessToken) {
+    // Redirect to homepage if authorized
+    return <Navigate to={HOMEPAGE} replace />;
+  }
 
-  const setThemeColorPresets = (themeColorPresets) => {
-    setSettings({
-      ...settings,
-      themeColorPresets,
-    });
-  };
-
-  const setThemeLayout = (themeLayout) => {
-    setSettings({
-      ...settings,
-      themeLayout,
-    });
-  };
-
-  const setThemeStretch = (themeStretch) => {
-    setSettings({
-      ...settings,
-      themeStretch,
-    });
-  };
-
-  const setBreadCrumn = (checked) => {
-    setSettings({
-      ...settings,
-      breadCrumb: checked,
-    });
-  };
-
-  const setMultiTab = (checked) => {
-    setSettings({
-      ...settings,
-      multiTab: checked,
-    });
-  };
-
-  // const style = {
-  //   backdropFilter: "blur(20px)",
-  //   backgroundImage: `url("${CyanBlur}"), url("${RedBlur}")`,
-  //   backgroundRepeat: "no-repeat, no-repeat",
-  //   backgroundColor: Color(colorBgContainer).alpha(0.9).toString(),
-  //   backgroundPosition: "right top, left bottom",
-  //   backgroundSize: "50, 50%",
-  // };
-
-  // const [isFullscreen, setIsFullscreen] = useState(screenfull.isFullscreen);
-  // const toggleFullScreen = () => {
-  //   if (screenfull.isEnabled) {
-  //     screenfull.toggle();
-  //     setIsFullscreen(!isFullscreen);
-  //   }
-  // };
-
-  const layoutBackground = (layout) =>
-    themeLayout === layout
-      ? `linear-gradient(135deg, ${colorBgBase} 0%, ${colorPrimary} 100%)`
-      : "#919eab";
+  const gradientBg = Color(colorBgElevated).alpha(0.9).toString();
+  const bg = `linear-gradient(${gradientBg}, ${gradientBg}) center center / cover no-repeat, url(${Overlay2})`;
 
   return (
-    <Layout className="relative flex !min-h-screen !w-full !flex-row">
-      <LoginForm />
-      <div
-        className="mb-3 text-base font-semibold"
-        style={{ color: colorTextSecondary }}
-      >
-        Mode
-      </div>
-      <div className="flex flex-row gap-4">
-        <Card
-          onClick={() => setThemeMode(ThemeMode.Light)}
-          className="flex h-20 w-full cursor-pointer items-center justify-center"
+    <>
+      <Layout className="relative flex !min-h-screen !w-full !flex-row">
+        <div
+          className="hidden grow flex-col items-center justify-center gap-[10px] bg-center bg-no-repeat md:flex"
+          style={{
+            background: bg,
+          }}
         >
-          <SvgIcon
-            icon="ic-settings-mode-sun"
-            size="24"
-            color={themeMode === ThemeMode.Light ? "white" : "black"}
+          <div className="text-3xl font-bold leading-normal text-center lg:text-4xl xl:text-5xl">
+            Faqih Admin
+          </div>
+          <img
+            className="max-w-[480px] xl:max-w-[560px]"
+            src={DashboardImg}
+            alt=""
           />
-        </Card>
-        <Card
-          onClick={() => setThemeMode(ThemeMode.Dark)}
-          className="flex h-20 w-full cursor-pointer items-center justify-center"
-        >
-          <SvgIcon
-            icon="ic-settings-mode-moon"
-            size="24"
-            color={themeMode === ThemeMode.Dark ? colorPrimary : ""}
-          />
-        </Card>
-      </div>
-    </Layout>
+          <Typography.Text className="flex flex-row gap-[16px] text-2xl">
+            {t("sys.login.signInSecondTitle")}
+          </Typography.Text>
+        </div>
+
+        <div className="m-auto flex !h-screen w-full max-w-[480px] flex-col justify-center px-[16px] lg:px-[64px]">
+          <LoginStateProvider>
+            <LoginForm />
+            <MobileForm />
+            <QrCodeFrom />
+            <RegisterForm />
+            <ResetForm />
+          </LoginStateProvider>
+        </div>
+
+        <div className="flex justify-between absolute right-2 top-0">
+          <LocalePicker />
+          <ThemePicker />
+        </div>
+      </Layout>
+    </>
   );
 };
 
-export default Login;
+export default Login2;
