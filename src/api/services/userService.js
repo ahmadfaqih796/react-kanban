@@ -1,7 +1,7 @@
 import apiClient from "../apiClient";
 
 export const UserApi = {
-  SignIn: "/auth/signin",
+  SignIn: "/login",
   SignUp: "/auth/signup",
   Logout: "/auth/logout",
   Refresh: "/auth/refresh",

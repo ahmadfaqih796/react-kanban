@@ -10,7 +10,7 @@ import { ErrorRoutes } from "@/router/routes/error-routes";
 import DashboardLayout from "@/layouts/dashboard";
 import AuthGuard from "./components/auth-guard";
 import { APP_BROWSER_HASH, HOMEPAGE } from "vite-env";
-// import { usePermissionRoutes } from "./hooks/use-permission-routes";
+import { usePermissionRoutes } from "./hooks";
 
 const LoginRoute = {
   path: "/login",
@@ -22,8 +22,7 @@ const PAGE_NOT_FOUND_ROUTE = {
 };
 
 export default function Router() {
-  console.log("ssssssssssssss", APP_BROWSER_HASH);
-  // const permissionRoutes = usePermissionRoutes();
+  const permissionRoutes = usePermissionRoutes();
   const asyncRoutes = {
     path: "/",
     element: (
@@ -33,7 +32,7 @@ export default function Router() {
     ),
     children: [
       { index: true, element: <Navigate to={HOMEPAGE} replace /> },
-      // ...permissionRoutes,
+      ...permissionRoutes,
     ],
   };
 

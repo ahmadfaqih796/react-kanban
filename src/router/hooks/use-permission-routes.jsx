@@ -12,7 +12,7 @@ import { BasicStatus, PermissionType } from "@/types/enum";
 
 // Using import.meta.glob to get all route components
 const entryPath = "/src/pages";
-const pages = import.meta.glob("/src/pages/**/*.tsx");
+const pages = import.meta.glob("/src/pages/**/*.jsx");
 export const pagesSelect = Object.entries(pages).map(([path]) => {
   const pagePath = path.replace(entryPath, "");
   return {

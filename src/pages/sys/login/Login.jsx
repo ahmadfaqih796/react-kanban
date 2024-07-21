@@ -25,7 +25,6 @@ const Login = () => {
   const { t } = useTranslation();
   const token = useUserToken();
   const { colorBgElevated } = useThemeToken();
-  console.log("cccccccccccc", colorBgElevated);
 
   // Check if user has a token
   if (token.accessToken) {

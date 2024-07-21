@@ -3,10 +3,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AiFillGithub, AiFillGoogleCircle, AiFillWechat } from "react-icons/ai";
 
-import { DEFAULT_USER, TEST_USER } from "@/_mock/assets";
+import { DEFAULT_USER } from "@/_mock/assets";
 import { useSignIn } from "@/store/userStore";
-import ProTag from "@/theme/antd/components/tag";
-import { useThemeToken } from "@/theme/hooks";
 
 import {
   LoginStateEnum,
@@ -15,7 +13,6 @@ import {
 
 const LoginForm = () => {
   const { t } = useTranslation();
-  const themeToken = useThemeToken();
   const [loading, setLoading] = useState(false);
 
   const { loginState, setLoginState } = useLoginStateContext();
@@ -49,44 +46,10 @@ const LoginForm = () => {
       >
         <div className="mb-4 flex flex-col">
           <Alert
-            type="info"
+            type="warning"
             description={
               <div className="flex flex-col">
-                <div className="flex">
-                  <ProTag className="flex-shrink-0">
-                    Admin {t("sys.login.userName")}:
-                  </ProTag>
-                  <strong
-                    className="ml-1"
-                    style={{ color: themeToken.colorInfoTextHover }}
-                  >
-                    <span>{DEFAULT_USER.username}</span>
-                  </strong>
-                </div>
-
-                <div className="flex">
-                  <ProTag className="flex-shrink-0">
-                    Test {t("sys.login.userName")}:
-                  </ProTag>
-                  <strong
-                    className="ml-1"
-                    style={{ color: themeToken.colorInfoTextHover }}
-                  >
-                    <span>{TEST_USER.username}</span>
-                  </strong>
-                </div>
-
-                <div>
-                  <ProTag className="flex-shrink-0">
-                    {t("sys.login.password")}:
-                  </ProTag>
-                  <strong
-                    className=" ml-1"
-                    style={{ color: themeToken.colorInfoTextHover }}
-                  >
-                    {DEFAULT_USER.password}
-                  </strong>
-                </div>
+                <span>{DEFAULT_USER.username}</span>
               </div>
             }
             showIcon
@@ -114,18 +77,20 @@ const LoginForm = () => {
         </Form.Item>
         <Form.Item>
           <Row>
-            <Col span={12}>
-              <Form.Item name="remember" valuePropName="checked" noStyle>
+            <Col span={12} className="flex align-middle">
+              <Form.Item name="remember" valuePropName="checked">
                 <Checkbox>{t("sys.login.rememberMe")}</Checkbox>
               </Form.Item>
             </Col>
             <Col span={12} className="text-right">
-              <button
-                className="!underline"
+              <Button
+                style={{ padding: 0 }}
+                type="link"
+                className="underline"
                 onClick={() => setLoginState(LoginStateEnum.RESET_PASSWORD)}
               >
                 {t("sys.login.forgetPassword")}
-              </button>
+              </Button>
             </Col>
           </Row>
         </Form.Item>
