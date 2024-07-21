@@ -1,25 +1,24 @@
-import React from "react";
 import { Typography } from "antd";
 import { m } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { NavLink } from "react-router-dom";
 
-// import Character4 from "@/assets/images/characters/character_4.png";
-// import MotionContainer from "@/components/animate/motion-container";
-// import { varBounce } from "@/components/animate/variants/bounce";
-// import { useThemeToken } from "@/theme/hooks";
+import Character4 from "@/assets/images/characters/character_4.png";
+import MotionContainer from "@/components/animate/motion-container";
+import { varBounce } from "@/components/animate/variants/bounce";
+import { useThemeToken } from "@/theme/hooks";
 
 const HOMEPAGE = import.meta.env.VITE_APP_HOMEPAGE;
 
 export default function Page403() {
-  //   const {
-  //     colorBgBase,
-  //     colorTextBase,
-  //     colorPrimary,
-  //     colorPrimaryActive,
-  //     colorPrimaryTextActive,
-  //     colorPrimaryHover,
-  //   } = useThemeToken();
+  const {
+    colorBgBase,
+    colorTextBase,
+    colorPrimary,
+    colorPrimaryActive,
+    colorPrimaryTextActive,
+    colorPrimaryHover,
+  } = useThemeToken();
 
   return (
     <>
