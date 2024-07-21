@@ -27,8 +27,8 @@
     "login": {
       "backSignIn": "Kembali",
       "signInFormTitle": "Masuk",
-      "mobileSignInFormTitle": "Masuk dengan Nomor HP",
-      "qrSignInFormTitle": "Masuk dengan Kode QR",
+      "mobileSignInFormTitle": "Masuk Nomor HP",
+      "qrSignInFormTitle": "Masuk Kode QR",
       "signUpFormTitle": "Daftar",
       "forgetFormTitle": "Lupa Kata Sandi",
 
