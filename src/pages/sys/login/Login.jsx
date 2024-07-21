@@ -1,5 +1,7 @@
+import { varSlide } from "@/components/animate/variants";
 import { Layout, Typography } from "antd";
 import Color from "color";
+import { AnimatePresence, m } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Navigate } from "react-router-dom";
 
@@ -37,11 +39,13 @@ const Login = () => {
       <Layout className="relative flex !min-h-screen !w-full !flex-row">
         <div className="m-auto flex !h-screen w-full max-w-[480px] flex-col justify-center px-[16px] lg:px-[64px]">
           <LoginStateProvider>
-            <LoginForm />
-            <MobileForm />
-            <QrCodeFrom />
-            <RegisterForm />
-            <ResetForm />
+            <AnimatePresence mode="wait">
+              <LoginForm key="login" />
+              <MobileForm key="mobile" />
+              <QrCodeFrom key="qrcode" />
+              <RegisterForm key="register" />
+              <ResetForm key="reset" />
+            </AnimatePresence>
           </LoginStateProvider>
         </div>
 
@@ -51,17 +55,29 @@ const Login = () => {
             background: bg,
           }}
         >
-          <div className="text-3xl font-bold leading-normal text-center lg:text-4xl xl:text-5xl">
-            Faqih Admin
-          </div>
-          <img
-            className="max-w-[480px] xl:max-w-[560px]"
-            src={DashboardImg}
-            alt=""
-          />
-          <Typography.Text className="flex flex-row gap-[16px] text-2xl">
-            {t("sys.login.signInSecondTitle")}
-          </Typography.Text>
+          <m.div
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={
+              varSlide({
+                distance: 500,
+              }).inRight
+            }
+            className="text-center"
+          >
+            <div className="text-3xl font-bold leading-normal text-center lg:text-4xl xl:text-5xl">
+              Faqih Admin
+            </div>
+            <img
+              className="max-w-[480px] xl:max-w-[560px]"
+              src={DashboardImg}
+              alt=""
+            />
+            <Typography.Text className="flex flex-row justify-center gap-[16px] text-2xl">
+              {t("sys.login.signInSecondTitle")}
+            </Typography.Text>
+          </m.div>
         </div>
 
         <div className="flex justify-between absolute right-2 top-0">

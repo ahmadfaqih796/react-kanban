@@ -1,3 +1,6 @@
+import MotionContainer from "@/components/animate/motion-container";
+import { varSlide } from "@/components/animate/variants";
+import { AnimatePresence, m } from "framer-motion";
 import { createContext, useContext, useMemo, useState } from "react";
 
 export const LoginStateEnum = {
@@ -33,7 +36,23 @@ export function LoginStateProvider({ children }) {
 
   return (
     <LoginStateContext.Provider value={value}>
-      {children}
+      <MotionContainer className="flex flex-col items-center justify-center px-2">
+        <AnimatePresence mode="wait">
+          <m.div
+            key={loginState}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={
+              varSlide({
+                distance: 500,
+              }).inLeft
+            }
+          >
+            {children}
+          </m.div>
+        </AnimatePresence>
+      </MotionContainer>
     </LoginStateContext.Provider>
   );
 }
