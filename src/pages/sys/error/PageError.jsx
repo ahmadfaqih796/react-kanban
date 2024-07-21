@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 import { useRouter } from "@/router/hooks";
 // import { useThemeToken } from '@/theme/hooks';
 
-const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
+const HOMEPAGE = import.meta.env.VITE_APP_HOMEPAGE;
 
 const PageError = ({ error, resetErrorBoundary }) => {
   const { replace } = useRouter();
