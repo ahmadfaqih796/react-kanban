@@ -39,8 +39,8 @@ const LoginForm = () => {
         size="large"
         initialValues={{
           remember: true,
-          username: DEFAULT_USER.username,
-          password: DEFAULT_USER.password,
+          username: "noviar",
+          password: "23",
         }}
         onFinish={handleFinish}
       >
