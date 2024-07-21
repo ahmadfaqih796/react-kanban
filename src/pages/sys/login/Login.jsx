@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Navigate } from "react-router-dom";
 
 import DashboardImg from "@/assets/images/background/dashboard.png";
+// import DashboardTemplate from "@/assets/images/background/dashboard.jpg";
 import Overlay2 from "@/assets/images/background/overlay_2.jpg";
 import { LocalePicker, ThemePicker } from "@/components/picker";
 import { useUserToken } from "@/store/userStore";
@@ -24,6 +25,7 @@ const Login = () => {
   const { t } = useTranslation();
   const token = useUserToken();
   const { colorBgElevated } = useThemeToken();
+  console.log("cccccccccccc", colorBgElevated);
 
   // Check if user has a token
   if (token.accessToken) {
@@ -53,6 +55,7 @@ const Login = () => {
           className="hidden grow flex-col items-center justify-center gap-[10px] bg-center bg-no-repeat md:flex"
           style={{
             background: bg,
+            // backgroundImage: `url(${DashboardTemplate})`,
           }}
         >
           <m.div
@@ -62,7 +65,7 @@ const Login = () => {
             variants={
               varSlide({
                 distance: 500,
-              }).inRight
+              }).inDown
             }
             className="text-center"
           >
