@@ -31,7 +31,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className="mb-4 text-2xl font-bold xl:text-3xl">
+      <div className="mb-6 text-2xl font-bold xl:text-3xl text-center">
         {t("sys.login.signInFormTitle")}
       </div>
       <Form
@@ -44,7 +44,7 @@ const LoginForm = () => {
         }}
         onFinish={handleFinish}
       >
-        <div className="mb-4 flex flex-col">
+        {/* <div className="mb-4 flex flex-col">
           <Alert
             type="warning"
             description={
@@ -54,7 +54,7 @@ const LoginForm = () => {
             }
             showIcon
           />
-        </div>
+        </div> */}
 
         <Form.Item
           name="username"
