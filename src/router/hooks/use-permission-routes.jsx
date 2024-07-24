@@ -1,14 +1,13 @@
+import { isEmpty } from "ramda";
 import { Suspense, lazy, useMemo } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { isEmpty } from "ramda";
 
 import { Iconify } from "@/components/icon";
 import { CircleLoading } from "@/components/loading";
-import { useUserPermission } from "@/store/userStore";
 import ProTag from "@/theme/antd/components/tag";
-import { flattenTrees } from "@/utils/tree";
 
 import { BasicStatus, PermissionType } from "@/types/enum";
+import { getRoutesFromModules } from "../utils";
 
 // Using import.meta.glob to get all route components
 const entryPath = "/src/pages";
@@ -30,23 +29,60 @@ function resolveComponent(path) {
  * return routes about permission
  */
 export function usePermissionRoutes() {
-  const permissions = useUserPermission();
+  const routers = getRoutesFromModules();
+  // console.log("vvvvvvvvvvv", routers);
+  // const flattenRoutes = flattenTrees(routers);
+  // const permissionRoutes = transformPermissionToMenuRoutes(
+  //   routers || [],
+  //   flattenRoutes
+  // );
+  // console.log("pohon", flattenRoutes);
 
+  // return useMemo(() => {
+  //   const flattenRoutes = flattenTrees(routers);
+  //   const permissionRoutes = transformPermissionToMenuRoutes(
+  //     routers || [],
+  //     flattenRoutes
+  //   );
+  //   return [...permissionRoutes];
+  // }, [routers]);
   return useMemo(() => {
-    const flattenedPermissions = flattenTrees(permissions);
-    const permissionRoutes = transformPermissionToMenuRoutes(
-      permissions || [],
-      flattenedPermissions
-    );
-    return [...permissionRoutes];
-  }, [permissions]);
+    return routers;
+  }, []);
+  // const userInfo = useUserInfo();
+  // const { privileges: userRole } = userInfo;
+  // console.log("ccscscscs", userRole);
+  // const filteredRoutes = filterRoutesByRoles(routers, userRole);
+
+  // return useMemo(() => {
+  //   return filteredRoutes;
+  // }, [filteredRoutes]);
+
+  // const permissions = useUserPermission();
+
+  // return useMemo(() => {
+  //   const flattenedPermissions = flattenTrees(permissions);
+  //   const permissionRoutes = transformPermissionToMenuRoutes(
+  //     permissions || [],
+  //     flattenedPermissions
+  //   );
+  //   return [...permissionRoutes];
+  // }, [permissions]);
 }
 
-/**
- * transform Permission[] to AppRouteObject[]
- * @param permissions
- * @param parent
- */
+const filterRoutesByRoles = (routes, userRoles) => {
+  return routes.filter((route) => {
+    if (route.children) {
+      route.children = filterRoutesByRoles(route.children, userRoles);
+    }
+    if (route.roles) {
+      console.log(route.roles.some((role) => userRoles.includes(role)));
+      return route.roles.some((role) => userRoles.includes(role));
+    }
+    return true;
+  });
+};
+
 function transformPermissionToMenuRoutes(permissions, flattenedPermissions) {
   return permissions.map((permission) => {
     const {
@@ -128,13 +164,6 @@ function transformPermissionToMenuRoutes(permissions, flattenedPermissions) {
   });
 }
 
-/**
- * Splicing from the root permission route to the current permission route
- * @param {Permission} permission - current permission
- * @param {Permission[]} flattenedPermissions - flattened permission array
- * @param {string} route - parent permission route
- * @returns {string} - The complete route after splicing
- */
 function getCompleteRoute(permission, flattenedPermissions, route = "") {
   const currentRoute = route
     ? `/${permission.route}${route}`

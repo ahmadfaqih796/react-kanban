@@ -26,7 +26,7 @@ export default function Router() {
   const asyncRoutes = {
     path: "/",
     element: (
-      <AuthGuard>
+      <AuthGuard menuRoutes={permissionRoutes}>
         <DashboardLayout />
       </AuthGuard>
     ),
