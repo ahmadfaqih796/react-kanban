@@ -8,8 +8,6 @@ import Logo from "@/components/logo";
 import { useSettings } from "@/store/settingStore";
 import { useResponsive, useThemeToken } from "@/theme/hooks";
 
-// import AccountDropdown from "../_common/account-dropdown";
-import BreadCrumb from "../_common/bread-crumb";
 // import NoticeButton from "../_common/notice";
 // import SearchBar from "../_common/search-bar";
 // import SettingButton from "../_common/setting-button";
@@ -23,6 +21,9 @@ import {
 import Nav from "./nav";
 
 import { ThemeLayout } from "@/types/enum";
+import { LocalePicker, ThemePicker } from "@/components/picker";
+import BreadCrumb from "../_common/bread-crumb";
+import AccountDropdown from "../_common/account-dropdown";
 
 const Header = ({ className = "", offsetTop = false }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -78,23 +79,22 @@ const Header = ({ className = "", offsetTop = false }) => {
           </div>
 
           <div className="flex">
-            {/* <SearchBar />
-            <LocalePicker /> */}
+            {/* <SearchBar /> */}
+            <ThemePicker />
+            <LocalePicker />
             <IconButton
-              onClick={() =>
-                window.open("https://github.com/d3george/slash-admin")
-              }
+              onClick={() => window.open("https://github.com/ahmadfaqih796")}
             >
               <Iconify icon="mdi:github" size={24} />
             </IconButton>
-            <IconButton
+            {/* <IconButton
               onClick={() => window.open("https://discord.gg/fXemAXVNDa")}
             >
               <Iconify icon="carbon:logo-discord" size={24} />
-            </IconButton>
+            </IconButton> */}
             {/* <NoticeButton />
-            <SettingButton />
-            <AccountDropdown /> */}
+            <SettingButton /> */}
+            <AccountDropdown />
           </div>
         </div>
       </header>
@@ -114,7 +114,6 @@ const Header = ({ className = "", offsetTop = false }) => {
         }}
         width="auto"
       >
-        xxx
         <Nav closeSideBarDrawer={() => setDrawerOpen(false)} />
       </Drawer>
     </>

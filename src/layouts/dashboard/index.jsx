@@ -8,7 +8,7 @@ import { useSettings } from "@/store/settingStore";
 import { useThemeToken } from "@/theme/hooks";
 
 import Header from "./header";
-// import Main from "./main";
+import Main from "./main";
 import Nav from "./nav";
 import NavHorizontal from "./nav-horizontal";
 import { ThemeLayout, ThemeMode } from "@/types/enum";
@@ -70,7 +70,7 @@ const DashboardLayout = () => {
             }
           />
           {nav}
-          {/* <Main ref={mainEl} offsetTop={offsetTop} /> */}
+          <Main ref={mainEl} offsetTop={offsetTop} />
         </Suspense>
       </div>
     </StyleWrapper>
