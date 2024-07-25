@@ -7,7 +7,7 @@ import ProgressBar from "@/components/progress-bar";
 import { useSettings } from "@/store/settingStore";
 import { useThemeToken } from "@/theme/hooks";
 
-// import Header from "./header";
+import Header from "./header";
 // import Main from "./main";
 // import Nav from "./nav";
 // import NavHorizontal from "./nav-horizontal";
@@ -64,14 +64,14 @@ const DashboardLayout = () => {
         }}
       >
         <Suspense fallback={<CircleLoading />}>
-          <div id="oooooo" className="rwa">
-            Dasboard
-          </div>
-          {/* <Header
+          <Header
             offsetTop={
               themeLayout === ThemeLayout.Vertical ? offsetTop : undefined
             }
-          /> */}
+          />
+          <div id="oooooo" className="rwa">
+            Dasboard
+          </div>
           {/* {nav} */}
           {/* <Main ref={mainEl} offsetTop={offsetTop} /> */}
         </Suspense>
