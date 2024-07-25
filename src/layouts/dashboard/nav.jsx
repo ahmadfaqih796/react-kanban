@@ -1,25 +1,25 @@
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { Menu, MenuProps } from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import Color from "color";
 import { m } from "framer-motion";
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useMatches, useNavigate } from "react-router-dom";
 
 import MotionContainer from "@/components/animate/motion-container";
 import { varSlide } from "@/components/animate/variants";
-// import Logo from '@/components/logo';
+import Logo from "@/components/logo";
 import Scrollbar from "@/components/scrollbar";
 import {
-  useRouteToMenuFn,
-  usePermissionRoutes,
   useFlattenedRoutes,
+  usePermissionRoutes,
+  useRouteToMenuFn,
 } from "@/router/hooks";
 import { menuFilter } from "@/router/utils";
 import { useSettingActions, useSettings } from "@/store/settingStore";
 import { useThemeToken } from "@/theme/hooks";
 
-import { NAV_COLLAPSED_WIDTH, NAV_WIDTH } from "./config";
 import { ThemeLayout } from "@/types/enum";
+import { NAV_COLLAPSED_WIDTH, NAV_WIDTH } from "./config";
+import { Menu } from "antd";
 
 const slideInLeft = varSlide({ distance: 10 }).inLeft;
 
@@ -121,7 +121,7 @@ const Nav = (props) => {
     >
       <div className="relative flex h-20 items-center justify-center py-4">
         <MotionContainer className="flex items-center">
-          {/* <Logo /> */}
+          <Logo />
           {themeLayout !== ThemeLayout.Mini && (
             <m.div variants={slideInLeft}>
               <span
@@ -156,7 +156,7 @@ const Nav = (props) => {
         }}
       >
         {/* <!-- Menu Sidebar --> */}
-        {/* <Menu
+        <Menu
           mode={menuMode}
           items={menuList}
           className="h-full !border-none"
@@ -168,7 +168,7 @@ const Nav = (props) => {
           onClick={onClick}
           style={menuStyle}
           inlineCollapsed={collapsed}
-        /> */}
+        />
       </Scrollbar>
     </div>
   );

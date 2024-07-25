@@ -20,7 +20,7 @@ import {
   HEADER_HEIGHT,
   OFFSET_HEADER_HEIGHT,
 } from "./config";
-// import Nav from "./nav";
+import Nav from "./nav";
 
 import { ThemeLayout } from "@/types/enum";
 
@@ -28,7 +28,6 @@ const Header = ({ className = "", offsetTop = false }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { themeLayout, breadCrumb } = useSettings();
   const { colorBgElevated, colorBorder } = useThemeToken();
-  console.log("ssssssssssssss", colorBgElevated);
   const { screenMap } = useResponsive();
 
   const headerStyle = {
@@ -116,7 +115,7 @@ const Header = ({ className = "", offsetTop = false }) => {
         width="auto"
       >
         xxx
-        {/* <Nav closeSideBarDrawer={() => setDrawerOpen(false)} /> */}
+        <Nav closeSideBarDrawer={() => setDrawerOpen(false)} />
       </Drawer>
     </>
   );

@@ -9,8 +9,8 @@ import { useThemeToken } from "@/theme/hooks";
 
 import Header from "./header";
 // import Main from "./main";
-// import Nav from "./nav";
-// import NavHorizontal from "./nav-horizontal";
+import Nav from "./nav";
+import NavHorizontal from "./nav-horizontal";
 import { ThemeLayout, ThemeMode } from "@/types/enum";
 
 // import { ThemeLayout, ThemeMode } from '@/type/enum';
@@ -40,14 +40,14 @@ const DashboardLayout = () => {
     onOffSetTop();
   }, [onOffSetTop]);
 
-  // const navVertical = (
-  //   <div className="z-50 hidden h-full flex-shrink-0 md:block">
-  //     <Nav />
-  //   </div>
-  // );
+  const navVertical = (
+    <div className="z-50 hidden h-full flex-shrink-0 md:block">
+      <Nav />
+    </div>
+  );
 
-  // const nav =
-  // themeLayout === ThemeLayout.Horizontal ? <NavHorizontal /> : navVertical;
+  const nav =
+    themeLayout === ThemeLayout.Horizontal ? <NavHorizontal /> : navVertical;
 
   return (
     <StyleWrapper $themeMode={themeMode}>
@@ -69,10 +69,7 @@ const DashboardLayout = () => {
               themeLayout === ThemeLayout.Vertical ? offsetTop : undefined
             }
           />
-          <div id="oooooo" className="rwa">
-            Dasboard
-          </div>
-          {/* {nav} */}
+          {nav}
           {/* <Main ref={mainEl} offsetTop={offsetTop} /> */}
         </Suspense>
       </div>
