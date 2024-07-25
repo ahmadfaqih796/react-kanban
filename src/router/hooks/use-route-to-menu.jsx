@@ -14,7 +14,6 @@ export const useRouteToMenuFn = () => {
   const { themeLayout } = useSettings();
   const userInfo = useUserInfo();
   const { privileges: userRoles } = userInfo;
-  console.log("frrrrrrrrr", userRoles);
 
   const routeToMenuFn = useCallback(
     (items) => {
@@ -29,8 +28,7 @@ export const useRouteToMenuFn = () => {
         .filter((item) => !item.meta?.hideMenu)
         .map((item) => {
           const menuItem = {};
-          const { meta, children, roles } = item;
-          console.log("ppppppppppp", roles);
+          const { meta, children } = item;
 
           if (meta) {
             const { key, label, icon, disabled, suffix } = meta;
