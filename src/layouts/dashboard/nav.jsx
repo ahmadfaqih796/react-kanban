@@ -18,8 +18,8 @@ import { useSettingActions, useSettings } from "@/store/settingStore";
 import { useThemeToken } from "@/theme/hooks";
 
 import { ThemeLayout } from "@/types/enum";
-import { NAV_COLLAPSED_WIDTH, NAV_WIDTH } from "./config";
 import { Menu } from "antd";
+import { NAV_COLLAPSED_WIDTH, NAV_WIDTH } from "./config";
 
 const slideInLeft = varSlide({ distance: 10 }).inLeft;
 
@@ -41,8 +41,26 @@ const Nav = (props) => {
 
   const routeToMenuFn = useRouteToMenuFn();
   const permissionRoutes = usePermissionRoutes();
+
+  const filterMenuRoutesByRole = (routes) => {
+    return routes.reduce((filteredRoutes, route) => {
+      const { roles, children, ...rest } = route;
+      if (!roles || roles.some((role) => userRoles.includes(role))) {
+        const filteredChildren = children
+          ? filterMenuRoutesByRole(children)
+          : [];
+        filteredRoutes.push({ ...rest, children: filteredChildren });
+      }
+      return filteredRoutes;
+    }, []);
+  };
+
+  // const menuRoutes = menuFilter(permissionRoutes);
   const menuRoutes = menuFilter(permissionRoutes);
   const menuList = routeToMenuFn(menuRoutes);
+
+  // const menuRoutes = filterMenuRoutesByRole(permissionRoutes);
+  // const menuList = routeToMenuFn(menuRoutes);
 
   // Mendapatkan daftar menu yang dipipihkan dari rute
   const flattenedRoutes = useFlattenedRoutes();
