@@ -146,7 +146,7 @@ const Nav = (props) => {
                 className="ml-2 text-xl font-bold"
                 style={{ color: colorPrimary }}
               >
-                Faqih Admin
+                Smart FLOW
               </span>
             </m.div>
           )}

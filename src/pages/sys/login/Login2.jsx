@@ -42,7 +42,7 @@ const Login2 = () => {
           }}
         >
           <div className="text-3xl font-bold leading-normal text-center lg:text-4xl xl:text-5xl">
-            Faqih Admin
+            Smart FLOW
           </div>
           <img
             className="max-w-[480px] xl:max-w-[560px]"

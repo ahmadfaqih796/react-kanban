@@ -5,7 +5,7 @@ import { SvgIcon } from "@/components/icon";
 import { CircleLoading } from "@/components/loading";
 
 const UserPage = lazy(() => import(`@/pages/management/system/user`));
-const Analysis = lazy(() => import("@/pages/dashboard/analysis"));
+const RolePage = lazy(() => import(`@/pages/management/role`));
 
 const management = {
   order: 2,
@@ -28,6 +28,15 @@ const management = {
       index: true,
       roles: ["ADMIN", "USER"],
       element: <Navigate to="user" replace />,
+    },
+    {
+      path: "role",
+      element: <RolePage />,
+      roles: ["ADMIN"],
+      meta: {
+        label: "sys.menu.system.role",
+        key: "/management/role",
+      },
     },
     {
       path: "user",

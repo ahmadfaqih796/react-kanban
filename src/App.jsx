@@ -14,7 +14,7 @@ function App() {
       <AntdApp>
         <MotionLazy>
           <Helmet>
-            <title>Faqih Admin</title>
+            <title>Smart FLOW</title>
             <link
               rel="icon"
               //  href={Logo}

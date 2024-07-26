@@ -4,7 +4,8 @@ import { t } from "@/locales/i18n";
 import useAlertStore from "@/store/alertStore";
 import userStore from "@/store/userStore";
 
-import { StatusCodeEnum } from "@/types/enum";
+import { StatusCodeEnum, StorageEnum } from "@/types/enum";
+import { getItem } from "@/utils/storage";
 
 // Membuat instance axios
 const axiosInstance = axios.create({
@@ -17,7 +18,8 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     // Sebelum mengirimkan permintaan, lakukan hal ini
-    config.headers.Authorization = "Bearer Token";
+    const token = getItem(StorageEnum.Token)?.accessToken;
+    config.headers.Authorization = `Bearer ${token || ""}`;
     return config;
   },
   (error) => {
