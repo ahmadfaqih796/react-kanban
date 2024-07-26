@@ -9,6 +9,7 @@ import {
   Row,
   Space,
   Popconfirm,
+  Pagination,
 } from "antd";
 import Table from "antd/es/table";
 import { useState } from "react";
@@ -21,6 +22,10 @@ import { CircleLoading } from "@/components/loading";
 export default function RolePage() {
   const [searchForm] = Form.useForm();
   const [query, setQuery] = useState({});
+  const [pageNumber, setPageNumber] = useState(1);
+  const [limit, setLimit] = useState(10);
+
+  console.log("bbbbbbbbbb", query);
 
   const columns = [
     { title: "Name", dataIndex: "position" },
@@ -34,7 +39,7 @@ export default function RolePage() {
         </ProTag>
       ),
     },
-    { title: "Created Date", dataIndex: "created_date", align: "center" },
+    { title: "Desc", dataIndex: "created_date", align: "center" },
     {
       title: "Action",
       key: "operation",
@@ -81,10 +86,10 @@ export default function RolePage() {
   };
 
   const { data: dataWorkflow, isLoading } = useQuery({
-    queryKey: ["role", query],
+    queryKey: ["role", query, pageNumber, limit],
     queryFn: async () => {
       try {
-        return await roleService.findAll(query);
+        return await roleService.findAll({ ...query, pageNumber, limit });
       } catch (err) {
         console.log("vvvvvvvvvvvvvv", err);
       }
@@ -94,12 +99,13 @@ export default function RolePage() {
   const onSearchFormReset = () => {
     searchForm.resetFields();
     setQuery({});
+    setPageNumber(1);
   };
 
   const onSearch = () => {
     const values = searchForm.getFieldsValue();
-    console.log("rrrrrrrrrrr", values);
     setQuery(values);
+    setPageNumber(1);
   };
 
   const onCreate = () => {
@@ -127,18 +133,23 @@ export default function RolePage() {
     }));
   };
 
+  const handlePageChange = (page, pageSize) => {
+    setPageNumber(page);
+    setLimit(pageSize);
+  };
+
   return (
     <Space direction="vertical" size="large" className="w-full">
       <Card>
         <Form form={searchForm}>
           <Row gutter={[16, 16]}>
             <Col span={24} lg={6}>
-              <Form.Item label="Name" name="keyword" className="!mb-0">
+              <Form.Item label="Search" name="keyword" className="!mb-0">
                 <Input />
               </Form.Item>
             </Col>
             <Col span={24} lg={6}>
-              {/* <Form.Item label="Status" name="status" className="!mb-0">
+              <Form.Item label="Status" name="status" className="!mb-0">
                 <Select>
                   <Select.Option value="enable">
                     <ProTag color="success">Enable</ProTag>
@@ -147,7 +158,7 @@ export default function RolePage() {
                     <ProTag color="error">Disable</ProTag>
                   </Select.Option>
                 </Select>
-              </Form.Item> */}
+              </Form.Item>
             </Col>
             <Col span={24} lg={12}>
               <div className="flex justify-end">
@@ -162,7 +173,7 @@ export default function RolePage() {
       </Card>
 
       <Card
-        title="Role List"
+        title="Organization List"
         extra={
           <Button type="primary" onClick={onCreate}>
             New
@@ -178,7 +189,15 @@ export default function RolePage() {
           dataSource={dataWorkflow?.data}
           rowSelection={{ ...rowSelection }}
           loading={!!isLoading && { indicator: <CircleLoading /> }}
-          locale={!!isLoading && { emptyText: "Loading..." }}
+          locale={{ emptyText: !!isLoading && "Loading..." }}
+        />
+        <Pagination
+          current={pageNumber}
+          pageSize={limit}
+          total={dataWorkflow?.total_data || 0}
+          onChange={handlePageChange}
+          showSizeChanger
+          pageSizeOptions={[10, 20, 50, 100]}
         />
       </Card>
     </Space>
