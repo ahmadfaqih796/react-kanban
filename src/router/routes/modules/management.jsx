@@ -4,13 +4,13 @@ import { Navigate, Outlet } from "react-router-dom";
 import { SvgIcon } from "@/components/icon";
 import { CircleLoading } from "@/components/loading";
 
-const HomePage = lazy(() => import(`@/pages/dashboard/workbench`));
+const UserPage = lazy(() => import(`@/pages/management/system/user`));
 const Analysis = lazy(() => import("@/pages/dashboard/analysis"));
 
 const management = {
   order: 2,
   path: "management",
-  roles: ["ADMIN", "USER"],
+  roles: ["ADMIN"],
   element: (
     <Suspense fallback={<CircleLoading />}>
       <Outlet />
@@ -19,7 +19,7 @@ const management = {
   meta: {
     label: "sys.menu.management",
     icon: (
-      <SvgIcon icon="ic-analysis" className="ant-menu-item-icon" size="24" />
+      <SvgIcon icon="ic-management" className="ant-menu-item-icon" size="24" />
     ),
     key: "/management",
   },
@@ -27,19 +27,13 @@ const management = {
     {
       index: true,
       roles: ["ADMIN", "USER"],
-      element: <Navigate to="workbench" replace />,
+      element: <Navigate to="user" replace />,
     },
     {
-      path: "workbench",
-      element: <HomePage />,
-      roles: ["ADMIN", "USER"],
-      meta: { label: "sys.menu.workbench", key: "/management/workbench" },
-    },
-    {
-      path: "analysis",
-      element: <Analysis />,
+      path: "user",
+      element: <UserPage />,
       roles: ["ADMIN"],
-      meta: { label: "sys.menu.analysis", key: "/management/analysis" },
+      meta: { label: "sys.menu.system.user", key: "/management/user" },
     },
   ],
 };
