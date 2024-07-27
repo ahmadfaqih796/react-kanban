@@ -28,7 +28,15 @@ export default function RolePage() {
 
   const columns = [
     {
+      title: "NO",
+      dataIndex: "id",
+      align: "center",
+      sorter: true,
+      render: (text, record, index) => (pageNumber - 1) * limit + index + 1,
+    },
+    {
       title: "Name",
+      sorter: true,
       dataIndex: "position",
     },
     {
@@ -88,10 +96,19 @@ export default function RolePage() {
   };
 
   const { data: dataWorkflow, isLoading } = useQuery({
-    queryKey: ["role", query, pageNumber, limit],
+    queryKey: ["role", query, pageNumber, limit, sortedInfo],
     queryFn: async () => {
       try {
-        return await roleService.findAll({ ...query, pageNumber, limit });
+        return await roleService.findAll({
+          ...query,
+          pageNumber,
+          limit,
+          // sort: sortedInfo,
+          ...(sortedInfo && {
+            sortDir: sortedInfo?.order === "ascend" ? "asc" : "desc",
+            sortFiled: sortedInfo?.field,
+          }),
+        });
       } catch (err) {
         console.log("error: ", err);
       }
@@ -143,6 +160,10 @@ export default function RolePage() {
   const handleLimitChange = (value) => {
     setLimit(value);
     setPageNumber(1); // Reset to first page on limit change
+  };
+
+  const handleTableChange = (pagination, filters, sorter) => {
+    setSortedInfo(sorter);
   };
 
   return (
@@ -217,6 +238,7 @@ export default function RolePage() {
           columns={columns}
           dataSource={dataWorkflow?.data}
           rowSelection={{ ...rowSelection }}
+          onChange={handleTableChange}
           // loading={!!isLoading && { indicator: <CircleLoading /> }}
           locale={!!isLoading && { emptyText: "Loading..." }}
         />
