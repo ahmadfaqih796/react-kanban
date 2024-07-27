@@ -24,11 +24,13 @@ export default function RolePage() {
   const [query, setQuery] = useState({});
   const [pageNumber, setPageNumber] = useState(1);
   const [limit, setLimit] = useState(10);
-
-  console.log("bbbbbbbbbb", query);
+  const [sortedInfo, setSortedInfo] = useState({});
 
   const columns = [
-    { title: "Name", dataIndex: "position" },
+    {
+      title: "Name",
+      dataIndex: "position",
+    },
     {
       title: "Status",
       dataIndex: "created_by",
@@ -91,7 +93,7 @@ export default function RolePage() {
       try {
         return await roleService.findAll({ ...query, pageNumber, limit });
       } catch (err) {
-        console.log("vvvvvvvvvvvvvv", err);
+        console.log("error: ", err);
       }
     },
   });
@@ -138,6 +140,11 @@ export default function RolePage() {
     setLimit(pageSize);
   };
 
+  const handleLimitChange = (value) => {
+    setLimit(value);
+    setPageNumber(1); // Reset to first page on limit change
+  };
+
   return (
     <Space direction="vertical" size="large" className="w-full">
       <Card>
@@ -180,6 +187,28 @@ export default function RolePage() {
           </Button>
         }
       >
+        <div className="flex justify-between items-center mb-4">
+          <Select
+            value={limit}
+            onChange={handleLimitChange}
+            style={{ width: 120 }}
+          >
+            <Select.Option value={10}>10 / page</Select.Option>
+            <Select.Option value={20}>20 / page</Select.Option>
+            <Select.Option value={50}>50 / page</Select.Option>
+            <Select.Option value={100}>100 / page</Select.Option>
+          </Select>
+          <Pagination
+            align="end"
+            current={pageNumber}
+            pageSize={limit}
+            total={dataWorkflow?.total_data || 0}
+            onChange={handlePageChange}
+            // showSizeChanger
+            // pageSizeOptions={[10, 20, 50, 100]}
+            className="flex-grow-0"
+          />
+        </div>
         <Table
           rowKey="id"
           size="small"
@@ -188,16 +217,8 @@ export default function RolePage() {
           columns={columns}
           dataSource={dataWorkflow?.data}
           rowSelection={{ ...rowSelection }}
-          loading={!!isLoading && { indicator: <CircleLoading /> }}
-          locale={{ emptyText: !!isLoading && "Loading..." }}
-        />
-        <Pagination
-          current={pageNumber}
-          pageSize={limit}
-          total={dataWorkflow?.total_data || 0}
-          onChange={handlePageChange}
-          showSizeChanger
-          pageSizeOptions={[10, 20, 50, 100]}
+          // loading={!!isLoading && { indicator: <CircleLoading /> }}
+          locale={!!isLoading && { emptyText: "Loading..." }}
         />
       </Card>
     </Space>
