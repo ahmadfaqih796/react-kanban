@@ -6,6 +6,7 @@ import { CircleLoading } from "@/components/loading";
 
 const UserPage = lazy(() => import(`@/pages/management/system/user`));
 const RolePage = lazy(() => import(`@/pages/management/role`));
+const DepartmentPage = lazy(() => import(`@/pages/management/department`));
 
 const management = {
   order: 2,
@@ -43,6 +44,15 @@ const management = {
       element: <UserPage />,
       roles: ["ADMIN"],
       meta: { label: "sys.menu.system.user", key: "/management/user" },
+    },
+    {
+      path: "department",
+      element: <DepartmentPage />,
+      roles: ["ADMIN"],
+      meta: {
+        label: "Department",
+        key: "/management/department",
+      },
     },
   ],
 };

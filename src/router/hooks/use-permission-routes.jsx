@@ -76,7 +76,6 @@ const filterRoutesByRoles = (routes, userRoles) => {
       route.children = filterRoutesByRoles(route.children, userRoles);
     }
     if (route.roles) {
-      console.log(route.roles.some((role) => userRoles.includes(role)));
       return route.roles.some((role) => userRoles.includes(role));
     }
     return true;

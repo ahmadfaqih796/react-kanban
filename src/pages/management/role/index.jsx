@@ -50,33 +50,33 @@ export default function RolePage() {
       ),
     },
     { title: "Desc", dataIndex: "created_date", align: "center" },
-    {
-      title: "Action",
-      key: "operation",
-      align: "center",
-      width: 100,
-      render: (_, record) => (
-        <div className="flex w-full justify-center text-gray">
-          <IconButton onClick={() => onEdit(record)}>
-            <Iconify icon="solar:pen-bold-duotone" size={18} />
-          </IconButton>
-          <Popconfirm
-            title="Delete the Organization"
-            okText="Yes"
-            cancelText="No"
-            placement="left"
-          >
-            <IconButton>
-              <Iconify
-                icon="mingcute:delete-2-fill"
-                size={18}
-                className="text-error"
-              />
-            </IconButton>
-          </Popconfirm>
-        </div>
-      ),
-    },
+    // {
+    //   title: "Action",
+    //   key: "operation",
+    //   align: "center",
+    //   width: 100,
+    //   render: (_, record) => (
+    //     <div className="flex w-full justify-center text-gray">
+    //       <IconButton onClick={() => onEdit(record)}>
+    //         <Iconify icon="solar:pen-bold-duotone" size={18} />
+    //       </IconButton>
+    //       <Popconfirm
+    //         title="Delete the Organization"
+    //         okText="Yes"
+    //         cancelText="No"
+    //         placement="left"
+    //       >
+    //         <IconButton>
+    //           <Iconify
+    //             icon="mingcute:delete-2-fill"
+    //             size={18}
+    //             className="text-error"
+    //           />
+    //         </IconButton>
+    //       </Popconfirm>
+    //     </div>
+    //   ),
+    // },
   ];
 
   const rowSelection = {
