@@ -5,7 +5,7 @@ import useAlertStore from "@/store/alertStore";
 import userStore from "@/store/userStore";
 
 import { StatusCodeEnum, StorageEnum } from "@/types/enum";
-import { getItem } from "@/utils/storage";
+import { clearItems, getItem, removeItem } from "@/utils/storage";
 
 // Membuat instance axios
 const axiosInstance = axios.create({
@@ -35,6 +35,13 @@ axiosInstance.interceptors.response.use(
 
     const alertStore = useAlertStore.getState();
     const { status, data, message } = res.data;
+
+    if (status === "401") {
+      userStore.getState().actions.clearUserInfoAndToken();
+      removeItem("token");
+      return;
+    }
+
     // Jika permintaan bisnis berhasil
     const hasSuccess =
       data && Reflect.has(res.data, "status") && status === StatusCodeEnum.OK;
