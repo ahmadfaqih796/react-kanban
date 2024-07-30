@@ -201,7 +201,7 @@ export default function RolePage() {
       </Card>
 
       <Card
-        title="Organization List"
+        title="Role List"
         extra={
           <Button type="primary" onClick={onCreate}>
             New

@@ -1,12 +1,9 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 import { SvgIcon } from "@/components/icon";
 import { CircleLoading } from "@/components/loading";
-
-const UserPage = lazy(() => import(`@/pages/management/system/user`));
-const RolePage = lazy(() => import(`@/pages/management/role`));
-const DepartmentPage = lazy(() => import(`@/pages/management/department`));
+import { DepartmentPage, RolePage, UserPage } from "../pages";
 
 const management = {
   order: 2,

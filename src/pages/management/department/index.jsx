@@ -7,11 +7,23 @@ import { Popconfirm } from "antd";
 import React from "react";
 
 const Department = () => {
+  const [query, setQuery] = React.useState({
+    PageNumber: 1,
+    limit: 10,
+  });
+  // const [pagination, setPagination] = React.useState({
+  //   page : 1,
+  //   limit : 10,
+  // })
   const { data: dataWorkflow, isLoading } = useQuery({
-    queryKey: ["department-list"],
+    queryKey: ["department-list", query],
     queryFn: async () => {
       try {
-        return await roleService.findAll({});
+        return await roleService.findAll({
+          // ...query,
+          pageNumber: query.pageNumber || 1,
+          limit: query.limit || 10,
+        });
       } catch (err) {
         console.log("error: ", err);
       }
@@ -41,34 +53,7 @@ const Department = () => {
         </ProTag>
       ),
     },
-    { title: "Desc", dataIndex: "created_date", align: "center" },
-    //  {
-    //    title: "Action",
-    //    key: "operation",
-    //    align: "center",
-    //    width: 100,
-    //    render: (_, record) => (
-    //      <div className="flex w-full justify-center text-gray">
-    //        <IconButton onClick={() => onEdit(record)}>
-    //          <Iconify icon="solar:pen-bold-duotone" size={18} />
-    //        </IconButton>
-    //        <Popconfirm
-    //          title="Delete the Organization"
-    //          okText="Yes"
-    //          cancelText="No"
-    //          placement="left"
-    //        >
-    //          <IconButton>
-    //            <Iconify
-    //              icon="mingcute:delete-2-fill"
-    //              size={18}
-    //              className="text-error"
-    //            />
-    //          </IconButton>
-    //        </Popconfirm>
-    //      </div>
-    //    ),
-    //  },
+    { title: "Created Date", dataIndex: "created_date", align: "center" },
   ];
   const dataSource = dataWorkflow?.data.map((item, index) => {
     return {
@@ -76,11 +61,16 @@ const Department = () => {
       key: index + 1,
     };
   });
-  console.log("dtttt", dataSource);
+  console.log("ppppppppppp", query);
 
   return (
     <div>
-      <TablePagination dataSource={dataSource} columns={columns} />
+      <TablePagination
+        onQuery={setQuery}
+        dataSource={dataSource}
+        columns={columns}
+        total={dataWorkflow?.total_data}
+      />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { StyleProvider } from "@ant-design/cssinjs";
 import { ConfigProvider, theme } from "antd";
 // import 'antd/dist/reset.css';
+import PropTypes from "prop-types";
 
 import useLocale from "@/locales/useLocale";
 import { useSettings } from "@/store/settingStore";
@@ -46,3 +47,7 @@ export default function AntdConfig({ children }) {
     </ConfigProvider>
   );
 }
+
+AntdConfig.propTypes = {
+  children: PropTypes.node.isRequired,
+};
