@@ -13,3 +13,8 @@ export const DepartmentPage = lazy(
 
 // kanban
 export const Kanban = lazy(() => import("@/pages/dashboard/analysis"));
+
+// error
+export const Page403 = lazy(() => import("@/pages/sys/error/Page403"));
+export const Page404 = lazy(() => import("@/pages/sys/error/Page404"));
+export const Page500 = lazy(() => import("@/pages/sys/error/Page500"));

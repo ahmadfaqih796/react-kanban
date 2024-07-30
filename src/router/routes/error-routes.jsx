@@ -1,14 +1,11 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 import { CircleLoading } from "@/components/loading";
 
-import AuthGuard from "../components/auth-guard";
 import SimpleLayout from "@/layouts/simple";
-
-const Page403 = lazy(() => import("@/pages/sys/error/Page403"));
-const Page404 = lazy(() => import("@/pages/sys/error/Page404"));
-const Page500 = lazy(() => import("@/pages/sys/error/Page500"));
+import AuthGuard from "../components/auth-guard";
+import { Page403, Page404, Page500 } from "./pages";
 
 /**
  * error routes
