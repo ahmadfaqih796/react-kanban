@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PageError from "@/pages/sys/error/PageError";
 import { useUserToken, useUserInfo } from "@/store/userStore";
 import { flattenTrees } from "@/utils/tree";
+import PropsTypes from "prop-types";
 
 const AuthGuard = ({ children, menuRoutes = [] }) => {
   const navigate = useNavigate();
@@ -75,6 +76,11 @@ const AuthGuard = ({ children, menuRoutes = [] }) => {
   return (
     <ErrorBoundary FallbackComponent={PageError}>{children}</ErrorBoundary>
   );
+};
+
+AuthGuard.propTypes = {
+  children: PropsTypes.node,
+  menuRoutes: PropsTypes.array,
 };
 
 export default AuthGuard;

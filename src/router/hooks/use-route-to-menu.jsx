@@ -78,7 +78,7 @@ export const useRouteToMenuFn = () => {
           return menuItem;
         });
     },
-    [t, themeLayout]
+    [t, themeLayout, userRoles]
   );
 
   return routeToMenuFn;
