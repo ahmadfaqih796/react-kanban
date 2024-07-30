@@ -1,11 +1,9 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 import { SvgIcon } from "@/components/icon";
 import { CircleLoading } from "@/components/loading";
-
-const HomePage = lazy(() => import(`@/pages/dashboard/workbench`));
-const Analysis = lazy(() => import("@/pages/dashboard/analysis"));
+import { Analysis, HomePage } from "../pages";
 
 const dashboard = {
   order: 1,
