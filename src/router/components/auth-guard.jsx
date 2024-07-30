@@ -5,9 +5,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PageError from "@/pages/sys/error/PageError";
 import { useUserToken, useUserInfo } from "@/store/userStore";
 import { flattenTrees } from "@/utils/tree";
-import PropsTypes from "prop-types";
+import PropTypes from "prop-types";
 
-const AuthGuard = ({ children, menuRoutes = [] }) => {
+const AuthGuard = ({ children, menuRoutes }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { accessToken } = useUserToken();
@@ -35,39 +35,8 @@ const AuthGuard = ({ children, menuRoutes = [] }) => {
       }
     }
 
-    // for (const route of menuRoutes) {
-    //   if (route.children) {
-    //     for (const child of route.children) {
-    //       const fullPath = `/${route.path}/${child.path}`;
-    //       if (
-    //         location.pathname === fullPath &&
-    //         child.roles &&
-    //         !child.roles.includes(userRole)
-    //       ) {
-    //         navigate("/403");
-    //         return false;
-    //       }
-    //     }
-    //   }
-    //   if (
-    //     location.pathname === `/${route.path}` &&
-    //     route.roles &&
-    //     !route.roles.includes(userRole)
-    //   ) {
-    //     navigate("/403");
-    //     return false;
-    //   }
-    // }
-
     return true;
-  }, [
-    accessToken,
-    flattenRoutes,
-    location.pathname,
-    menuRoutes,
-    navigate,
-    userRole,
-  ]);
+  }, [accessToken, flattenRoutes, location.pathname, navigate, userRole]);
 
   useEffect(() => {
     checkAccess();
@@ -79,8 +48,8 @@ const AuthGuard = ({ children, menuRoutes = [] }) => {
 };
 
 AuthGuard.propTypes = {
-  children: PropsTypes.node,
-  menuRoutes: PropsTypes.array,
+  children: PropTypes.node,
+  menuRoutes: PropTypes.array,
 };
 
 export default AuthGuard;
