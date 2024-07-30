@@ -2,6 +2,7 @@ import MotionContainer from "@/components/animate/motion-container";
 import { varSlide } from "@/components/animate/variants";
 import { AnimatePresence, m } from "framer-motion";
 import { createContext, useContext, useMemo, useState } from "react";
+import PropTypes from "prop-types";
 
 export const LoginStateEnum = {
   LOGIN: "LOGIN",
@@ -56,3 +57,7 @@ export function LoginStateProvider({ children }) {
     </LoginStateContext.Provider>
   );
 }
+
+LoginStateProvider.propTypes = {
+  children: PropTypes.node,
+};
