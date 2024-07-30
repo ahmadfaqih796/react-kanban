@@ -4,8 +4,9 @@ import { useMatches, useOutlet } from "react-router-dom";
 
 import { useFlattenedRoutes } from "./use-flattened-routes";
 import { useRouter } from "./use-router";
+import { replaceDynamicParams } from "./use-replace-dynamic-params";
+import { HOMEPAGE } from "vite-env";
 
-const HOMEPAGE = import.meta.env.VITE_APP_HOMEPAGE;
 /**
  * Mengembalikan informasi Meta dari rute saat ini
  */
@@ -43,7 +44,7 @@ export function useCurrentRouteMeta() {
     } else {
       push(HOMEPAGE);
     }
-  }, [matches]);
+  }, [matches, children, flattenedRoutes, push]);
 
   return currentRouteMeta;
 }
@@ -51,26 +52,26 @@ export function useCurrentRouteMeta() {
 /**
  * Mengganti `user/:id` dengan `/user/1234512345`
  */
-export const replaceDynamicParams = (menuKey, params) => {
-  let replacedPathName = menuKey;
+// export const replaceDynamicParams = (menuKey, params) => {
+//   let replacedPathName = menuKey;
 
-  // Memeriksa nama parameter dalam path rute
-  const paramNames = menuKey.match(/:\w+/g);
+//   // Memeriksa nama parameter dalam path rute
+//   const paramNames = menuKey.match(/:\w+/g);
 
-  if (paramNames) {
-    paramNames.forEach((paramName) => {
-      // Menghapus tanda titik dua, mendapatkan nama parameter
-      const paramKey = paramName.slice(1);
-      // Memeriksa apakah objek params memiliki parameter ini
-      if (params[paramKey]) {
-        // Mengganti nilai dalam path dengan nilai dari params
-        replacedPathName = replacedPathName.replace(
-          paramName,
-          params[paramKey]
-        );
-      }
-    });
-  }
+//   if (paramNames) {
+//     paramNames.forEach((paramName) => {
+//       // Menghapus tanda titik dua, mendapatkan nama parameter
+//       const paramKey = paramName.slice(1);
+//       // Memeriksa apakah objek params memiliki parameter ini
+//       if (params[paramKey]) {
+//         // Mengganti nilai dalam path dengan nilai dari params
+//         replacedPathName = replacedPathName.replace(
+//           paramName,
+//           params[paramKey]
+//         );
+//       }
+//     });
+//   }
 
-  return replacedPathName;
-};
+//   return replacedPathName;
+// };
