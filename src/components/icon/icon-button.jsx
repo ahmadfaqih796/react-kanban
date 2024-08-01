@@ -1,4 +1,5 @@
-export default function IconButton({ children, className, style, onClick }) {
+import PropTypes from "prop-types";
+const IconButton = ({ children, className, style, onClick }) => {
   return (
     <button
       style={style}
@@ -8,4 +9,13 @@ export default function IconButton({ children, className, style, onClick }) {
       {children}
     </button>
   );
-}
+};
+
+IconButton.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  onClick: PropTypes.func,
+};
+
+export default IconButton;
