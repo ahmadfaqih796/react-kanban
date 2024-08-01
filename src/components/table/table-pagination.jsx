@@ -1,11 +1,16 @@
 import { Pagination, Select, Table } from "antd";
 import React, { useState } from "react";
 
-const TablePagination = ({ dataSource, columns, total, onQuery, ...props }) => {
-  const [query, setQuery] = useState({});
+const TablePagination = ({
+  dataSource,
+  columns,
+  columnNumber = true,
+  total,
+  onQuery,
+  ...props
+}) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [sortedInfo, setSortedInfo] = useState({});
 
   // const rowSelection = {
   //   onChange: (selectedRowKeys, selectedRows) => {
@@ -23,21 +28,39 @@ const TablePagination = ({ dataSource, columns, total, onQuery, ...props }) => {
   //   },
   // };
 
+  const handleColumns = (columns) => {
+    if (columnNumber) {
+      return [
+        {
+          title: "NO",
+          dataIndex: "id",
+          align: "center",
+          // sorter: true,
+          render: (_, __, index) => (pageNumber - 1) * limit + index + 1,
+        },
+        ...columns,
+      ];
+    } else {
+      return columns || [];
+    }
+  };
+
   const handlePageChange = (page, pageSize) => {
     setPageNumber(page);
     setLimit(pageSize);
-    onQuery({ ...query, PageNumber: page, limit: pageSize });
+    onQuery((prev) => ({ ...prev, pageNumber: page, limit: pageSize }));
   };
 
   const handleLimitChange = (value) => {
+    setPageNumber(1);
     setLimit(value);
-    setPageNumber(1); // Reset to first page on limit change
-    onQuery({ ...query, limit: value });
+    onQuery((prev) => ({ ...prev, pageNumber: 1, limit: value }));
   };
 
   const handleTableChange = (pagination, filters, sorter) => {
-    setSortedInfo(sorter);
+    onQuery((prev) => ({ ...prev, sorter: sorter }));
   };
+
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
@@ -66,13 +89,22 @@ const TablePagination = ({ dataSource, columns, total, onQuery, ...props }) => {
         {...props}
         //   key={"id"}
         //   rowKey={"id"}
+        onChange={handleTableChange}
         dataSource={dataSource || []}
-        columns={columns || []}
+        columns={handleColumns(columns)}
         pagination={false}
       />
       ;
     </div>
   );
 };
+
+// TablePagination.defaultProps = {
+//   dataSource: [],
+//   columns: [],
+//   columnNumber: true,
+//   total: 0,
+//   onQuery: () => {},
+// };
 
 export default TablePagination;

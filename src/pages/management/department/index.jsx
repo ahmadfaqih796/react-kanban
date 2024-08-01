@@ -1,21 +1,15 @@
 import roleService from "@/api/services/roleService";
-import { IconButton, Iconify } from "@/components/icon";
 import TablePagination from "@/components/table/table-pagination";
 import ProTag from "@/theme/antd/components/tag";
 import { useQuery } from "@tanstack/react-query";
-import { Popconfirm } from "antd";
 import React from "react";
 
 const Department = () => {
   const [query, setQuery] = React.useState({
-    PageNumber: 1,
+    pageNumber: 1,
     limit: 10,
   });
-  // const [pagination, setPagination] = React.useState({
-  //   page : 1,
-  //   limit : 10,
-  // })
-  const { data: dataWorkflow, isLoading } = useQuery({
+  const { data: dataWorkflow } = useQuery({
     queryKey: ["department-list", query],
     queryFn: async () => {
       try {
@@ -23,6 +17,10 @@ const Department = () => {
           // ...query,
           pageNumber: query.pageNumber || 1,
           limit: query.limit || 10,
+          ...(query.sorter && {
+            sortDir: query.sorter?.order === "ascend" ? "asc" : "desc",
+            sortFiled: query.sorter?.field,
+          }),
         });
       } catch (err) {
         console.log("error: ", err);
@@ -31,27 +29,17 @@ const Department = () => {
   });
 
   const columns = [
-    //  {
-    //    title: "NO",
-    //    dataIndex: "id",
-    //    align: "center",
-    //    sorter: true,
-    //    render: (text, record, index) => (pageNumber - 1) * limit + index + 1,
-    //  },
     {
       title: "Name",
       sorter: true,
       dataIndex: "position",
     },
     {
-      title: "Status",
+      title: "Created By",
+      sorter: true,
       dataIndex: "created_by",
       align: "center",
-      render: (created_by) => (
-        <ProTag color={created_by === "enable" ? "success" : "error"}>
-          {created_by}
-        </ProTag>
-      ),
+      render: (created_by) => <ProTag color={"success"}>{created_by}</ProTag>,
     },
     { title: "Created Date", dataIndex: "created_date", align: "center" },
   ];
@@ -69,6 +57,7 @@ const Department = () => {
         onQuery={setQuery}
         dataSource={dataSource}
         columns={columns}
+        columnNumber={false}
         total={dataWorkflow?.total_data}
       />
     </div>
