@@ -44,7 +44,7 @@ axiosInstance.interceptors.response.use(
 
     // Jika permintaan bisnis berhasil
     const hasSuccess =
-      data && Reflect.has(res.data, "status") && status === StatusCodeEnum.OK;
+      Reflect.has(res.data, "status") && status === StatusCodeEnum.OK;
     if (hasSuccess) {
       alertStore.setAlert("success", message);
       return res.data;
