@@ -109,7 +109,7 @@ const Department = () => {
   };
 
   const handleEdit = (record) => {
-    console.log(record);
+    // console.log(record);
     setSelectedRecord(record);
     setOpen({ ...open, edit: true });
   };
