@@ -108,11 +108,11 @@ const Department = () => {
     setOpen({ ...open, add: true });
   };
 
-  const handleEdit = (record) => {
-    // console.log(record);
-    setSelectedRecord(record);
-    setOpen({ ...open, edit: true });
-  };
+  // const handleEdit = (record) => {
+  //   // console.log(record);
+  //   setSelectedRecord(record);
+  //   setOpen({ ...open, edit: true });
+  // };
 
   const handleDelete = (record) => {
     setSelectedRecord(record);
