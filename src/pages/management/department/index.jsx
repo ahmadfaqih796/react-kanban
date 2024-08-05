@@ -4,7 +4,7 @@ import DeleteModal from "@/components/modal/delete-modal";
 import TablePagination from "@/components/table/table-pagination";
 import ProTag from "@/theme/antd/components/tag";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { App } from "antd";
+import { App, Button, Card } from "antd";
 import React from "react";
 
 const Department = () => {
@@ -14,7 +14,6 @@ const Department = () => {
     edit: false,
     delete: false,
   });
-  const [openCoba, setOpenCoba] = React.useState(false);
   const [selectedRecord, setSelectedRecord] = React.useState(null);
   const [query, setQuery] = React.useState({
     pageNumber: 1,
@@ -130,12 +129,24 @@ const Department = () => {
 
   return (
     <div>
-      <TablePagination
-        onQuery={setQuery}
-        dataSource={dataSource}
-        columns={columns}
-        total={dataWorkflow?.total_data}
-      />
+      <Card
+        title="Department List"
+        extra={
+          <Button
+            type="primary"
+            // onClick={onCreate}
+          >
+            New
+          </Button>
+        }
+      >
+        <TablePagination
+          onQuery={setQuery}
+          dataSource={dataSource}
+          columns={columns}
+          total={dataWorkflow?.total_data}
+        />
+      </Card>
 
       <DeleteModal
         visible={open.delete}

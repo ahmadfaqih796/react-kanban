@@ -5,19 +5,16 @@ import {
   Col,
   Form,
   Input,
-  Select,
-  Row,
-  Space,
-  Popconfirm,
   Pagination,
+  Row,
+  Select,
+  Space,
 } from "antd";
 import Table from "antd/es/table";
 import { useState } from "react";
 
 import roleService from "@/api/services/roleService";
-import { IconButton, Iconify } from "@/components/icon";
 import ProTag from "@/theme/antd/components/tag";
-import { CircleLoading } from "@/components/loading";
 
 export default function RolePage() {
   const [searchForm] = Form.useForm();
@@ -32,7 +29,7 @@ export default function RolePage() {
       dataIndex: "id",
       align: "center",
       sorter: true,
-      render: (text, record, index) => (pageNumber - 1) * limit + index + 1,
+      render: (_, __, index) => (pageNumber - 1) * limit + index + 1,
     },
     {
       title: "Name",
