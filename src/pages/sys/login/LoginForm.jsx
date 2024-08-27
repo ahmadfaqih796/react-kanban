@@ -44,7 +44,7 @@ const LoginForm = () => {
         }}
         onFinish={handleFinish}
       >
-        {/* <div className="mb-4 flex flex-col">
+        <div className="mb-4 flex flex-col">
           <Alert
             type="warning"
             description={
@@ -54,7 +54,7 @@ const LoginForm = () => {
             }
             showIcon
           />
-        </div> */}
+        </div>
 
         <Form.Item
           name="username"
