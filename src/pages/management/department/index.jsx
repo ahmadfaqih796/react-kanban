@@ -102,10 +102,10 @@ const Department = () => {
     };
   });
 
-  const handleAdd = () => {
-    setSelectedRecord(null);
-    setOpen({ ...open, add: true });
-  };
+  // const handleAdd = () => {
+  //   setSelectedRecord(null);
+  //   setOpen({ ...open, add: true });
+  // };
 
   // const handleEdit = (record) => {
   //   // console.log(record);

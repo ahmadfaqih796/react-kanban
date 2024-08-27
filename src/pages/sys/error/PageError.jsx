@@ -1,7 +1,7 @@
 import { Typography } from "antd";
 import { m } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { propTypes } from "prop-types";
+import { PropTypes } from "prop-types";
 
 import Character5 from "@/assets/images/characters/character_5.png";
 import MotionContainer from "@/components/animate/motion-container";
@@ -250,6 +250,6 @@ export default function PageError({ error, resetErrorBoundary }) {
 }
 
 PageError.propTypes = {
-  error: propTypes.object,
-  resetErrorBoundary: propTypes.func,
+  error: PropTypes.string,
+  resetErrorBoundary: PropTypes.func,
 };
