@@ -130,6 +130,7 @@ const Department = () => {
   return (
     <div>
       <Card
+        data-test-id="department-list"
         title="Department List"
         extra={
           <Button

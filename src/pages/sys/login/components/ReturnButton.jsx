@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import { useTranslation } from "react-i18next";
 import { MdArrowBackIosNew } from "react-icons/md";
+import { propTypes } from "prop-types";
 
 export function ReturnButton({ onClick }) {
   const { t } = useTranslation();
@@ -13,3 +14,7 @@ export function ReturnButton({ onClick }) {
     </Button>
   );
 }
+
+ReturnButton.propTypes = {
+  onClick: propTypes.func,
+};

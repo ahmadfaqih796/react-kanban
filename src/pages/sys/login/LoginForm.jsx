@@ -40,7 +40,7 @@ const LoginForm = () => {
         initialValues={{
           remember: true,
           username: "noviar",
-          password: "23",
+          password: "m1xQDexrBgjuOfgCKNgyJg==",
         }}
         onFinish={handleFinish}
       >
