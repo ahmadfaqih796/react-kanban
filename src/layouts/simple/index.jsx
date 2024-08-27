@@ -1,5 +1,5 @@
 import { useThemeToken } from "@/theme/hooks";
-import React from "react";
+import PropTypes from "prop-types";
 
 // import HeaderSimple from '../_common/header-simple';
 
@@ -18,3 +18,7 @@ export default function SimpleLayout({ children }) {
     </div>
   );
 }
+
+SimpleLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
