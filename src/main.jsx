@@ -9,7 +9,6 @@ import App from "./App.jsx";
 
 import { HelmetProvider } from "react-helmet-async";
 
-// eslint-disable-next-line import/no-unresolved
 // untuk mendaftarkan ikon SVG
 import "virtual:svg-icons-register";
 // i18n
@@ -32,15 +31,15 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <React.Suspense>
-        {/* <Analytics /> */}
-        <App />
-      </React.Suspense>
-    </QueryClientProvider>
-  </HelmetProvider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <React.Suspense>
+          {/* <Analytics /> */}
+          <App />
+        </React.Suspense>
+      </QueryClientProvider>
+    </HelmetProvider>
+  </React.StrictMode>
 );
