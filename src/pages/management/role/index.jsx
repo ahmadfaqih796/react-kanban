@@ -125,28 +125,7 @@ export default function RolePage() {
   };
 
   const onCreate = () => {
-    setOrganizationModalProps((prev) => ({
-      ...prev,
-      show: true,
-      title: "Create New",
-      formValue: {
-        ...prev.formValue,
-        id: "",
-        name: "",
-        order: 1,
-        desc: "",
-        status: "enable",
-      },
-    }));
-  };
-
-  const onEdit = (formValue) => {
-    setOrganizationModalProps((prev) => ({
-      ...prev,
-      show: true,
-      title: "Edit",
-      formValue,
-    }));
+    console.log("tambah");
   };
 
   const handlePageChange = (page, pageSize) => {
