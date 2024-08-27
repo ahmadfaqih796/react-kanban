@@ -42,18 +42,18 @@ const Nav = (props) => {
   const routeToMenuFn = useRouteToMenuFn();
   const permissionRoutes = usePermissionRoutes();
 
-  const filterMenuRoutesByRole = (routes) => {
-    return routes.reduce((filteredRoutes, route) => {
-      const { roles, children, ...rest } = route;
-      if (!roles || roles.some((role) => userRoles.includes(role))) {
-        const filteredChildren = children
-          ? filterMenuRoutesByRole(children)
-          : [];
-        filteredRoutes.push({ ...rest, children: filteredChildren });
-      }
-      return filteredRoutes;
-    }, []);
-  };
+  // const filterMenuRoutesByRole = (routes) => {
+  //   return routes.reduce((filteredRoutes, route) => {
+  //     const { roles, children, ...rest } = route;
+  //     if (!roles || roles.some((role) => userRoles.includes(role))) {
+  //       const filteredChildren = children
+  //         ? filterMenuRoutesByRole(children)
+  //         : [];
+  //       filteredRoutes.push({ ...rest, children: filteredChildren });
+  //     }
+  //     return filteredRoutes;
+  //   }, []);
+  // };
 
   // const menuRoutes = menuFilter(permissionRoutes);
   const menuRoutes = menuFilter(permissionRoutes);
